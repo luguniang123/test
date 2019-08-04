@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+    
+</head>
+<body>
+    注意v-html v-text和插值表达式一模一样，开发中一般直接写插值表达式
+    {{插值表达式只能写在innerHtml的位置}}
+    v-text="直接写变量"  v-text写在属性位置 
+    除了写的位置不一样，其他与插值表达式一样 {{}}用""代替
+    <div id="app">
+        <h1 v-text="username"></h1>
+        <p v-text="'欧阳'+username"></p>
+        <p v-text="age+1"></p>
+        <p v-text="age>=18?'未成年':'已成年'"></p>
+        <p v-text="username.split('').reverse().join('')"></p>
+    </div>
+    <script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            username:'jack',
+            age:18
+        }
+    })
+    </script>
+</body>
+</html>

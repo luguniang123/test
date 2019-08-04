@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ name}}</h1>
+        <!-- 监听dom事件：v-on:事件类型（包括自定义的事件类型）="函数" -->
+
+        <button v-on:click="changeName">点击改变</button>
+        <button @click="changeNameByArg('程序员传个参数')">点击改变参数</button>
+        <button @click="getEvent">获取事件对象</button>
+        <!-- 特殊在vue中事件对象如果要传 只能写 $event 注意不能加引号 -->
+        <button @click="getEvent($event)">事件对象的第二种写法 了解</button>
+        <!-- 事件修饰符：用来增强事件功能，常用的有.stop阻止冒泡 .prevent阻止默认行为
+             -->
+        <a href="http://www.baidu.com">跳转到百度</a>     
+        <br>
+        <a href="http://www.baidu.com" @click.prevent="print">阻止跳转</a>
+      <!-- 按键修饰符  键盘按下时，按回车键时候.enter 别名-->
+        <input type="text" v-model="name" @keyDown.13="submit">     
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'it'
+            },
+            methods: {
+                changeName() {
+                    // 改变name的值
+                    this.name = 'changed'
+                },
+                changeNameByArg(newName) {
+                    this.name = newName
+                },
+                getEvent(e) {
+                    console.log(e)
+                },
+                print(){
+                    console.log("阻止跳转")
+                },
+                submit(e){
+                    console.log('你提交了表单');
+                    console.log(e.keyCode)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    前后端分离模式 前端负责url跳转 页面跳转 后台只关注于数据输出
+    jquery能否实现？随着前端页面越来越复杂，用户对于交互性要求也越来越高，仅仅用jquery是远远不够的。
+    框架：针对某类业务提供整套解决方案，并且定义好了一整套规范，开发者必须按照规范去做。数据需要写在data里面 插值表达式的规范
+    
+
+    
+    调试工具：root代表根组件
+    <div id="app">
+        <div id="add1">0</div>
+        <!-- 点击事件操作数据就可以了 -->
+        <button @click="val=val+1">+1</button>
+        <h1>{{ msg }}</h1>
+    </div>
+    <div></div>
+    <script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            val:0,
+            msg:'hello world'
+        }
+    })
+    </script>
+</body>
+</html>

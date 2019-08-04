@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+    <style>
+    .redfont{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <!-- v-bind动态绑定属性 -->
+    <div id="app">
+        <img :src="avatarUrl" alt="">
+        <!-- 注意动态的属性前面加上冒号 注意前面是字符串，后面是变量 -->
+        <a :href="`del.php?id=${id}`">删除</a>
+        <!-- 可以绑定自定义属性 -->
+        <p :username="username">测试绑定任何属性</p>
+        <p :class="{redfont:username==='jack'}">测试动态样式，只有username=jack时候变成红色</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                username:'jack',
+                age:18,
+                avatarUrl:'../img/15148625745739.png', 
+                id:11
+            }
+        })
+    </script>
+</body>
+</html>

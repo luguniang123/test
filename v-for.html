@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--1、 v-for遍历数组使用方式 v-for="item in arr"item是一个参数，表示数组中的每一项，arr也是一个参数，表示你要遍历的数组 -->
+        <!-- 使用方式2：v-for="(item,index) in arr" -->
+        <!-- v-for可以根据data中的数据动态该bain视图 -->
+        <!-- key属性保证:key的唯一性 唯一标示数据的每一项提高渲染技能 -->
+        <ul>
+            <li v-for="item in list" :key="item.id">{{item.name}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">{{item.name}}</li>
+        </ul>
+
+        <!-- 遍历对象  -->
+        <ul>
+            <li v-for="item in boss" :key="value">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,key,index) in boss" :key="index">{{key}}---{{item}}--{{index}}</li>
+        </ul>
+    </div>
+
+    <!--***注意: 使用数组的length属性去更改数组的时候不行，vm.list.length=0;错
+    使用数组的index索引 vm.list[0]={id:0,name:"数据变但是视图就是不变"}错去更改数组时不行 -->
+    <!-- 解决办法 -->
+    <!--**1.vue全局的方法 Vue.set(target,key,value) 数组中target表示数组名称 key是索引，value表示该索引项的新的值；
+        对象：key是键 value:值  
+    Vue.set(vm.list, 0, {id: 111, name: 'jack'})
+-->
+    <!--2.数组的splice方法 vm.list.splice(0,1);//删除 vm.list.splice(0,1,{id:5,name:"splice新加"})// -->
+    <!-- 另外：v-html v-text 和插值表达式的区别：v-text写在属性的位置 -->
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                        id: 11,
+                        name: 'jack'
+                    },
+                    {
+                        id: 12,
+                        name: 'rose'
+                    },
+                    {
+                        id: 13,
+                        name: 'neil'
+                    }
+                ],
+                boss: {
+                    name: 'mayun',
+                    age: 50
+                }
+            }
+        })
+        vm.list.push({
+            id: 4,
+            name: 'new'
+        })
+    </script>
+</body>
+
+</html>
