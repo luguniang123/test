@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        a();
+        function a() {
+            let params = {
+                dept: "旧的",
+                status: 0
+            }
+            b(params)
+        }
+
+        function b(params = {}) {
+            if (Object.keys(params).length == 0) {
+               var  params = {
+                    dept: 1,
+                    status: 1,
+                    className: "",
+                    pageSize: 1
+                }
+            }
+            var obj = {
+                dept: params.dept||"",
+                status: params.status||0,
+                className: params.className || ""
+            }
+
+            console.log(obj)
+
+        }
+    </script>
 </body>
+
 </html>

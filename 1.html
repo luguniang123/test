@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0
+    }
+    ul{
+        height: 2500px;
+        background: pink;
+        font-size: 40px;
+        overflow-x: hidden;
+
+    }
+    li{
+        width: 100%;
+        height: 150px;
+        border: 1px solid #dddddd;
+        line-height: 150px;
+    }
+</style>
+</head>
+
+<body>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+        <li>列表6</li>
+        <li>列表7</li>
+        <li>列表8</li>
+        <li>列表9</li>
+        <li>列表10</li>
+        <li>列表11</li>
+        <li>列表12</li>
+        <li>列表13</li>
+        <li>列表14</li>
+        <li>列表15</li>
+        <li>列表16</li>
+    </ul>
+
+</body>
+<script>
+
+    //编写一个javscript函数 fn，该函数有一个参数 n（数字类型），其返回值是一个数组，该数组内是 n 个随机且不重复的整数，且整数取值范围是 [2, 32]。
+    window.onload = function(){
+        
+        
+  //获取滚动条当前的位置 
+  function getScrollTop() {
+    var scrollTop = 0;
+    if(document.documentElement && document.documentElement.scrollTop) {
+        scrollTop = document.documentElement.scrollTop;
+    } else if(document.body) {
+        scrollTop = document.body.scrollTop;
+    }
+    return scrollTop;
+  }
+
+         //获取当前可视范围的高度 
+         function getClientHeight() {
+            var clientHeight = 0;
+            if(document.body.clientHeight && document.documentElement.clientHeight) {
+                clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+            } else {
+                clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+            }
+            return clientHeight;
+         }
+
+         //获取文档完整的高度 
+         function getScrollHeight() {
+            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+         }
+         
+         //滚动事件触发
+         window.onscroll = function() {
+            console.log(getScrollTop()+ getClientHeight())
+            if(getScrollTop() + getClientHeight() +1== getScrollHeight()) {
+                alert("到底了")
+         
+            }
+         }
+
+
+     }
+ </script>
+ </html>
